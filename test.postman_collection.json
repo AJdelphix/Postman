@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "53b5af49-e411-44fc-9b4f-fbc0c223524e",
+		"name": "test",
+		"description": "curl -s -X POST -k --data @- http://104.42.120.215/resources/json/delphix/session \\\n   -c ~/cookies.txt -H \"Content-Type: application/json\" <<EOF\n{\n   \"type\": \"APISession\",\n   \"version\": {\n       \"type\": \"APIVersion\",\n       \"major\": 1,\n       \"minor\": 4,\n       \"micro\": 3\n   }\n}\nEOF\n{\n   \"status\":\"OK\",\n   \"result\": {\n       \"type\":\"APISession\",\n       \"version\": {\n           \"type\": \"APIVersion\",\n           \"major\": 1,\n           \"minor\": 4,\n           \"micro\": 3\n       },\n       \"locale\": \"en_US\",\n       \"client\": null\n   },\n   \"job\": null\n}\n\nEOF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Session ",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"type\": \"APISession\",\n\"version\": {\n\"type\": \"APIVersion\",\n\"major\": 1,\n\"minor\": 10,\n\"micro\": 3\n}}"
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/session",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\" : \"LoginRequest\",\n\t\"username\" : \"delphix_admin\",\n\t\"password\" : \"delphix\"\n}"
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/login",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get List of Containers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/selfservice/container",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"selfservice",
+						"container"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get sources and dsources",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/database",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"database"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh container",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \"type\": \"RefreshParameters\",\n       \"timeflowPointParameters\": {\n               \"type\": \"TimeflowPointSemantic\",\n\t\t\t   \"container\": \"MSSQL_DB_CONTAINER-1\",\n               \"timeflow\": \"MSSQL_TIMEFLOW-327\",\n               \"location\": \"LATEST_SNAPSHOT\"\n       }\n}"
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/database/MSSQL_DB_CONTAINER-4/refresh",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"database",
+						"MSSQL_DB_CONTAINER-4",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh MS SQL Breakfix container",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \"type\": \"RefreshParameters\",\n       \"timeflowPointParameters\": {\n               \"type\": \"TimeflowPointSemantic\",\n\t\t\t   \"container\": \"MSSQL_DB_CONTAINER-16\",\n               \"timeflow\": \"MSSQL_TIMEFLOW-324\",\n               \"location\": \"LATEST_SNAPSHOT\"\n       }\n}"
+				},
+				"url": {
+					"raw": "http://{{IP}}/resources/json/delphix/database/MSSQL_DB_CONTAINER-39/refresh",
+					"protocol": "http",
+					"host": [
+						"{{IP}}"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"database",
+						"MSSQL_DB_CONTAINER-39",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Self Service Branches",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://54.237.146.61/resources/json/delphix/about",
+					"protocol": "http",
+					"host": [
+						"54",
+						"237",
+						"146",
+						"61"
+					],
+					"path": [
+						"resources",
+						"json",
+						"delphix",
+						"about"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ff724be8-1e76-4f1d-be5d-5870aa5a74c3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "83231029-43e1-497b-829e-7c47440c1c1e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
